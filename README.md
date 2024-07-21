@@ -1,7 +1,7 @@
 <div align="center" id="top"> 
   <img src="./.github/app.gif" alt="NoIdeaGame" />
 
-  &#xa0;
+&#xa0;
 
   <!-- <a href="https://noideagame.netlify.app">Demo</a> -->
 </div>
@@ -9,28 +9,33 @@
 <h1 align="center">NoIdeaGame</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/AmirrezaSoltani/noideagame?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/AmirrezaSoltani/noideagame">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/AmirrezaSoltani/noideagame?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/AmirrezaSoltani/noideagame">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/AmirrezaSoltani/noideagame?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/AmirrezaSoltani/noideagame">
 
-  <img alt="License" src="https://img.shields.io/github/license/AmirrezaSoltani/noideagame?color=56BEB8">
+  <img alt="License" src="https://img.shields.io/github/license/AmirrezaSoltani/noideagame">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/AmirrezaSoltani/noideagame?color=56BEB8" /> -->
+  <img alt="Github issues" src="https://img.shields.io/github/issues/AmirrezaSoltani/noideagame" />
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/AmirrezaSoltani/noideagame?color=56BEB8" /> -->
+  <img alt="Github forks" src="https://img.shields.io/github/forks/AmirrezaSoltani/noideagame" />
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/AmirrezaSoltani/noideagame?color=56BEB8" /> -->
+  <img alt="Github stars" src="https://img.shields.io/github/stars/AmirrezaSoltani/noideagame" />
+
+  <img alt="AppVeyor Build" src="https://img.shields.io/appveyor/build/amirrezasoltani/noideagame">
+  
+  <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/amirrezasoltani/noideagame/total">
+
 </p>
 
-<!-- Status -->
+Status
 
-<!-- <h4 align="center"> 
+<h4 align="center"> 
 	🚧  NoIdeaGame 🚀 Under construction...  🚧
-</h4> 
+</h4>
 
-<hr> -->
+<hr>
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
@@ -44,27 +49,27 @@
 
 <br>
 
-## :dart: About ##
+## :dart: About
 
 answer Questions and shoot ducks Game!
 
-## :sparkles: Features ##
+## :sparkles: Features
 
 :heavy_check_mark: More than 2000 Question;\
 :heavy_check_mark: Feature 2;\
 :heavy_check_mark: Feature 3;
 
-## :rocket: Technologies ##
+## :rocket: Technologies
 
 The following tools were used in this project:
 
 - [Python](https://www.python.org/)
 
-## :white_check_mark: Requirements ##
+## :white_check_mark: Requirements
 
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Python](https://www.python.org/) and [MongoDB](https://www.mongodb.com/docs/manual/installation/) installed.
 
-## :checkered_flag: Starting ##
+## :checkered_flag: Starting
 
 ```bash
 # Clone this project
@@ -79,10 +84,9 @@ $ python index.py
 
 ```
 
-## :memo: License ##
+## :memo: License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
 
 Made with :heart: by <a href="https://github.com/AmirrezaSoltani" target="_blank">Amirreza Soltani</a>
 
