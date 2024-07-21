@@ -1,2 +1,4 @@
 MongoClient
 pytest
+pygame
+pygame_menu
