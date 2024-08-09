@@ -1,7 +1,6 @@
-MongoClient
-pymongo
 openpyxl
 pandas
 pytest
 pygame
 pygame_menu
+easygui
