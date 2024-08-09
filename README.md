@@ -1,12 +1,12 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="NoIdeaGame" />
+  <img src="./.github/app.gif" alt="Hunt the Ducks" />
 
 &#xa0;
 
   <!-- <a href="https://noideagame.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">NoIdeaGame</h1>
+<h1 align="center">Hunt the Ducks</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/AmirrezaSoltani/noideagame">
@@ -23,8 +23,8 @@
 
   <img alt="Github stars" src="https://img.shields.io/github/stars/AmirrezaSoltani/noideagame" />
 
-  <img alt="AppVeyor Build" src="https://img.shields.io/appveyor/build/amirrezasoltani/noideagame">
-  
+  <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/amirrezasoltani/noideagame/pylint.yml">
+
   <img alt="GitHub Downloads (all assets, all releases)" src="https://img.shields.io/github/downloads/amirrezasoltani/noideagame/total">
 
 </p>
@@ -32,7 +32,7 @@
 Status
 
 <h4 align="center"> 
-	🚧  NoIdeaGame 🚀 Under construction...  🚧
+	🚧  Hunt the Ducks 🚀 Under construction...  🚧
 </h4>
 
 <hr>
@@ -51,13 +51,13 @@ Status
 
 ## :dart: About
 
-answer Questions and shoot ducks Game!
+shoot ducks Game!
 
 ## :sparkles: Features
 
-:heavy_check_mark: More than 2000 Question;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: we prepaired fastest ducks in earth for you!;\
+:heavy_check_mark: you have Gun;\
+<!-- :heavy_check_mark: Feature 3; -->
 
 ## :rocket: Technologies
 
@@ -67,7 +67,7 @@ The following tools were used in this project:
 
 ## :white_check_mark: Requirements
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Python](https://www.python.org/) and [MongoDB](https://www.mongodb.com/docs/manual/installation/) installed.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Python](https://www.python.org/) installed.
 
 ## :checkered_flag: Starting
 

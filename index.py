@@ -1,15 +1,15 @@
 import pygame 
 
-from screens import main_menu,draw_menu
+from screens import main_menu_screen
 
-game_name="No Idea!"
+game_name="Hunt the Ducks!"
 
 pygame.init()
 pygame.display.set_caption(game_name)
 surface = pygame.display.set_mode((800, 600))
 
-menu=draw_menu(surface=surface,menu_name=game_name)
 
-main_menu(surface=surface,menu_name="Main Menu",menu=menu)
+
+main_menu_screen(surface=surface)
 
 
