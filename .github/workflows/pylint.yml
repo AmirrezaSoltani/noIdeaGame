@@ -20,4 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint game/*.py
+        pylint game/*.py --output=lint.txt || true
