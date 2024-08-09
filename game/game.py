@@ -1,36 +1,34 @@
-import pygame
-import sys
 import random
-import screens 
-# pygame.init()
+"""Module providing a function to create game with python."""
+import pygame
+import game.screens as screens
+from game.colors import WHITE, BLACK, RED, GREEN, GRAY
 
-def HuntGame(surface):
-    # display
-    
-    # surface = pygame.display.set_mode((width, height))
+
+
+def my_crosshair(crosshair_img):
+    """Function draws the crosshair."""
+    pygame.draw.circle(crosshair_img, WHITE, (10, 10), 10, 2)
+    pygame.draw.line(crosshair_img, WHITE, (0, 10), (20, 10), 2)
+    pygame.draw.line(crosshair_img, WHITE, (10, 0), (10, 20), 2)
+
+
+def hunt_game_start(surface):
+    """Function starts the game."""
     width, height = surface.get_width(), surface.get_height()
     pygame.display.set_caption("Duck Shooting Game")
 
-    # Colors
-    WHITE = (255, 255, 255)
-    BLACK = (0, 0, 0)
-    RED = (255, 0, 0)
-    GREEN = (0, 255, 0)
-    GRAY = (150, 150, 150)
-
-    # Duck 
+    # Duck
     duck_img = pygame.Surface((50, 30))
     duck_img.fill(RED)
     duck_rect = duck_img.get_rect()
     duck_speed = 3
 
     # Crosshair
-    pygame.mouse.set_visible(False)
     crosshair_img = pygame.Surface((20, 20), pygame.SRCALPHA)
-    pygame.draw.circle(crosshair_img, WHITE, (10, 10), 10, 2)
-    pygame.draw.line(crosshair_img, WHITE, (0, 10), (20, 10), 2)
-    pygame.draw.line(crosshair_img, WHITE, (10, 0), (10, 20), 2)
-    crosshair_rect = crosshair_img.get_rect()
+    my_crosshair(crosshair_img)
+    crosshair_rect=crosshair_img.get_rect()
+    pygame.mouse.set_visible(False)
 
     # Fonts
     font = pygame.font.Font(None, 36)
@@ -39,7 +37,9 @@ def HuntGame(surface):
     # Buttons
     button_width, button_height = 200, 50
     button_y = height - button_height - 20
-    play_again_button = pygame.Rect((width // 2 - button_width - 10), button_y, button_width, button_height)
+    play_again_button = pygame.Rect(
+        (width // 2 - button_width - 10), button_y, button_width, button_height
+    )
     exit_button = pygame.Rect((width // 2 + 10), button_y, button_width, button_height)
 
     def draw_button(surface, text, rect, color):
@@ -57,7 +57,7 @@ def HuntGame(surface):
         duck_dx = random.choice([-1, 1]) * random.uniform(0.5, 2)
         change_direction_counter = 0
         game_over = False
-        
+
     def reset_duck():
         return random.randint(0, width - duck_rect.width), height
 
@@ -74,7 +74,7 @@ def HuntGame(surface):
     game_over = False
 
     # Main game loop
-    #TODO implement class
+    # TODO implement class
     running = True
     clock = pygame.time.Clock()
 
@@ -87,7 +87,11 @@ def HuntGame(surface):
                     if play_again_button.collidepoint(event.pos):
                         reset_game()
                     elif exit_button.collidepoint(event.pos):
-                        screens.main_menu_screen(surface=surface,)
+                        screens.main_menu_screen(
+                            surface=surface,
+                            score=score
+
+                        )
                 elif not game_over and ammo > 0:
                     ammo -= 1
                     if duck_rect.collidepoint(event.pos):
@@ -102,7 +106,7 @@ def HuntGame(surface):
             # Move the duck
             duck_x += duck_dx
             duck_y -= duck_speed
-            
+
             duck_rect.x = int(duck_x)
             duck_rect.y = int(duck_y)
 
@@ -137,7 +141,7 @@ def HuntGame(surface):
         if not game_over:
             surface.blit(duck_img, duck_rect)
         surface.blit(crosshair_img, crosshair_rect)
-        
+
         # Draw score and ammo
         score_text = font.render(f"Score: {score}", True, WHITE)
         ammo_text = font.render(f"Ammo: {ammo}", True, WHITE)
@@ -150,18 +154,21 @@ def HuntGame(surface):
                 game_over_text = big_font.render("Game Over!", True, RED)
             else:
                 game_over_text = big_font.render("Victory!", True, GREEN)
-            
+
             final_score_text = font.render(f"You Got {score} Duck!", True, WHITE)
-            
-            surface.blit(game_over_text, (width//2 - game_over_text.get_width()//2, height//2 - 50))
-            surface.blit(final_score_text, (width//2 - final_score_text.get_width()//2, height//2 + 50))
+
+            surface.blit(
+                game_over_text,
+                (width // 2 - game_over_text.get_width() // 2, height // 2 - 50),
+            )
+            surface.blit(
+                final_score_text,
+                (width // 2 - final_score_text.get_width() // 2, height // 2 + 50),
+            )
             pygame.mouse.set_visible(True)
-            #TODO remove crosshair 
+            # TODO remove crosshair
             draw_button(surface, "Play Again", play_again_button, GRAY)
             draw_button(surface, "Main Menu", exit_button, GRAY)
 
         pygame.display.flip()
         clock.tick(60)
-
-    pygame.quit()
-    sys.exit()

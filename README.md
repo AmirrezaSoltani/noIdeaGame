@@ -58,6 +58,11 @@ shoot ducks Game!
 :heavy_check_mark: we prepaired fastest ducks in earth for you!;\
 :heavy_check_mark: you have Gun;\
 <!-- :heavy_check_mark: Feature 3; -->
+## :sparkles:  V2 Features
+
+:heavy_check_mark: answer questions to get extra ammo;\
+<!-- :heavy_check_mark: you have Gun;\ -->
+<!-- :heavy_check_mark: Feature 3; -->
 
 ## :rocket: Technologies
 
