@@ -1,9 +1,10 @@
 import random
+
 """Module providing a function to create game with python."""
 import pygame
 import game.screens as screens
 from game.colors import WHITE, BLACK, RED, GREEN, GRAY
-
+from itertools import cycle
 
 
 def my_crosshair(crosshair_img):
@@ -18,16 +19,47 @@ def hunt_game_start(surface):
     width, height = surface.get_width(), surface.get_height()
     pygame.display.set_caption("Duck Shooting Game")
 
-    # Duck
-    duck_img = pygame.Surface((50, 30))
-    duck_img.fill(RED)
+    # Load duck GIF
+    duck_frames = []
+
+    try:
+        duck_gif = pygame.image.load("./assets/duck.gif")
+        # TODO fix duck gif to animated
+        for frame_number in range(duck_gif.get_width() // duck_gif.get_height()):
+            frame_surf = pygame.Surface(
+                (duck_gif.get_height(), duck_gif.get_height()), pygame.SRCALPHA
+            )
+            frame_surf.blit(
+                duck_gif,
+                (0, 0),
+                (
+                    frame_number * duck_gif.get_height(),
+                    0,
+                    duck_gif.get_height(),
+                    duck_gif.get_height(),
+                ),
+            )
+            duck_frames.append(frame_surf)
+    except pygame.error:
+        print("Error loading the duck GIF. Using a default surface instead.")
+        default_duck = pygame.Surface((50, 50))
+        default_duck.fill(RED)
+        duck_frames = [default_duck]
+
+    if not duck_frames:
+        print("No frames were extracted from the GIF. Using a default surface instead.")
+        default_duck = pygame.Surface((50, 50))
+        default_duck.fill(RED)
+        duck_frames = [default_duck]
+
+    duck_cycle = cycle(duck_frames)
+    duck_img = next(duck_cycle)
     duck_rect = duck_img.get_rect()
     duck_speed = 3
-
     # Crosshair
     crosshair_img = pygame.Surface((20, 20), pygame.SRCALPHA)
     my_crosshair(crosshair_img)
-    crosshair_rect=crosshair_img.get_rect()
+    crosshair_rect = crosshair_img.get_rect()
     pygame.mouse.set_visible(False)
 
     # Fonts
@@ -72,7 +104,7 @@ def hunt_game_start(surface):
 
     # Game state
     game_over = False
-
+    stage = 1
     # Main game loop
     # TODO implement class
     running = True
@@ -87,15 +119,17 @@ def hunt_game_start(surface):
                     if play_again_button.collidepoint(event.pos):
                         reset_game()
                     elif exit_button.collidepoint(event.pos):
-                        screens.main_menu_screen(
-                            surface=surface,
-                            score=score
-
-                        )
+                        screens.main_menu_screen(surface=surface, score=score)
                 elif not game_over and ammo > 0:
                     ammo -= 1
                     if duck_rect.collidepoint(event.pos):
                         score += 1
+                        if score // stage >= stage + 5:
+                            print(score)
+                            print(stage)
+                            stage += 1
+                            duck_speed += 1
+                        ammo += 2
                         duck_x, duck_y = reset_duck()
                         duck_dx = random.choice([-1, 1]) * random.uniform(0.5, 2)
                         change_direction_counter = 0
@@ -109,6 +143,7 @@ def hunt_game_start(surface):
 
             duck_rect.x = int(duck_x)
             duck_rect.y = int(duck_y)
+            duck_img = next(duck_cycle)
 
             # Sudden changes in path
             change_direction_counter += 1
@@ -121,13 +156,14 @@ def hunt_game_start(surface):
                 duck_dx *= -1
 
             # Deduct point if duck leaves the top of the surface
+            #
             if duck_rect.bottom < 0:
                 score = max(0, score - 1)
                 duck_x, duck_y = reset_duck()
                 duck_dx = random.choice([-1, 1]) * random.uniform(0.5, 2)
                 change_direction_counter = 0
 
-            # Reset duck position if it goes off-surface at the bottom
+            # Reset duck position if it goes off-surface at the bottom never happens!
             if duck_rect.top > height:
                 duck_x, duck_y = reset_duck()
                 duck_dx = random.choice([-1, 1]) * random.uniform(0.5, 2)
@@ -138,6 +174,11 @@ def hunt_game_start(surface):
 
         # Draw everything
         surface.fill(BLACK)
+        # create a surface object, image is drawn on it.
+        imp = pygame.image.load("./assets/stage.png").convert()
+
+        # Using blit to copy content from one surface to other
+        surface.blit(imp, (0, 0))
         if not game_over:
             surface.blit(duck_img, duck_rect)
         surface.blit(crosshair_img, crosshair_rect)
@@ -147,6 +188,7 @@ def hunt_game_start(surface):
         ammo_text = font.render(f"Ammo: {ammo}", True, WHITE)
         surface.blit(score_text, (10, 10))
         surface.blit(ammo_text, (width - 120, 10))
+        surface.blit(duck_img, duck_rect)
 
         # Game end surface
         if game_over:

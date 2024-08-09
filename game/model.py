@@ -7,7 +7,7 @@ class Player(BaseModel):
 
 class GameSession(BaseModel):
     mode: str
-    score: int
+    high_score: int
 
 
 class Question(BaseModel):

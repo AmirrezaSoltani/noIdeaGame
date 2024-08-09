@@ -47,6 +47,7 @@ def main_menu_screen(surface,score):
     
     menu.set_title("Main Menu")
     menu.add.label(f"Current high score : {high_score} ")
+    menu.add.text_input("Player name : ")
     menu.add.vertical_margin(5)
     menu.add.button("Start Game", start_the_game)
     menu.add.button("Save", save_game)
