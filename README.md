@@ -35,6 +35,12 @@ Status
 	🚧  Hunt the Ducks 🚀 Under construction...  🚧
 </h4>
 
+
+
+https://github.com/user-attachments/assets/41c28f8f-cc5b-4583-8b41-fe1424e89ec1
+
+
+
 <hr>
 
 <p align="center">
